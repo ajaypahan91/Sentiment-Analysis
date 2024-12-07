@@ -91,5 +91,5 @@ def web_scrapper(url_review, len_page=4):
     return Review
 
 # Example usage:
-df = web_scrapper('https://www.amazon.in/Prestige-Electric-Kettle-PKOSS-1500watts/dp/B01MQZ7J8K/ref=pd_rhf_dp_s_vtp_ses_clicks_nonshared_d_sccl_2_4/261-5943901-0306121?pd_rd_w=WEFZC&content-id=amzn1.sym.bbc929e6-0703-4254-ace1-2b3564aa1f3a&pf_rd_p=bbc929e6-0703-4254-ace1-2b3564aa1f3a&pf_rd_r=A9P4G8K637NNSDRA7W7H&pd_rd_wg=90L6P&pd_rd_r=281801ab-53e2-4cdf-8780-c2825a408acd&pd_rd_i=B01MQZ7J8K&th=1', len_page=4)
-print(df)
+# df = web_scrapper('https://www.amazon.in/Prestige-Electric-Kettle-PKOSS-1500watts/dp/B01MQZ7J8K/ref=pd_rhf_dp_s_vtp_ses_clicks_nonshared_d_sccl_2_4/261-5943901-0306121?pd_rd_w=WEFZC&content-id=amzn1.sym.bbc929e6-0703-4254-ace1-2b3564aa1f3a&pf_rd_p=bbc929e6-0703-4254-ace1-2b3564aa1f3a&pf_rd_r=A9P4G8K637NNSDRA7W7H&pd_rd_wg=90L6P&pd_rd_r=281801ab-53e2-4cdf-8780-c2825a408acd&pd_rd_i=B01MQZ7J8K&th=1', len_page=4)
+# print(df)
