@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis of Reviews</h1>
+        <hr>
+
+        <!-- Sentiment of Single Review -->
+        <form method="POST">
+            <h2>Check Sentiment of a Single Review</h2>
+            <label for="single_review">Enter Review:</label>
+            <textarea id="single_review" name="single_review" rows="4" placeholder="Enter a review..." required></textarea>
+            
+            <label for="model_choice">Choose Sentiment Classifier:</label>
+            <select id="model_choice" name="model_choice">
+                <option value="Logistic Regression">Logistic Regression</option>
+                <option value="Support Vector Machine (SVM)">Support Vector Machine (SVM)</option>
+                <option value="Random Forest">Random Forest</option>
+            </select>
+
+            <button type="submit">Check Sentiment</button>
+        </form>
+
+        {% if show_result %}
+            <hr>
+            <h2>Sentiment Analysis Result:</h2>
+            <h2>Review:</h2><p>{{ review }}</p>
+            <h3>Sentiment: {{ result }}</h3>
+            <h4>Model Used: {{ model }}</h4>
+           <a href="/">Go Back</a>
+        {% endif %}
+        <hr>
+        <!-- Sentiment of Reviews from Product URL -->
+        <form method="POST">
+            <h2>Check Sentiment of Product Reviews</h2>
+            <label for="url_review">Enter Product URL:</label>
+            <input type="text" id="url_review" name="url_review" placeholder="Enter the URL of the Amazon product" required>
+
+            <button type="submit">Check Reviews</button>
+        </form>
+        
+        <div class="spinner" id="loading-spinner" style="display: none;">
+            <div class="loader"></div>
+            <p>Analyzing sentiment, please wait...</p>
+        </div>
+
+        {% if show_reviews %}
+       
+        <!-- Display the Sentiment Distribution Chart -->
+        {% if sentiment_chart %}
+            <hr>
+            <h3>Sentiment Distribution:</h3>
+            <img src="data:image/png;base64,{{ sentiment_chart }}" alt="Sentiment Distribution Chart">
+        {% endif %}
+
+        <!-- Display Average Sentiment -->
+        {% if avg_sentiment is not none %}
+            <hr>
+            <h3>Average Sentiment:</h3>
+            <p>Sentiment Score: {{ avg_sentiment | round(2) }}</p>
+            <p>Interpretation: 
+                {% if avg_sentiment > 0 %}
+                    Positive
+                {% elif avg_sentiment < 0 %}
+                    Negative
+                {% else %}
+                    Neutral
+                {% endif %}
+            </p>
+        {% endif %}
+
+        <hr>
+        <h2>Reviews:</h2>
+        <div>
+            {{ reviews | safe }}
+        </div>
+
+        <a href="/">Go Back</a>
+    {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const forms = document.querySelectorAll("form");
+            const spinner = document.getElementById("loading-spinner");
+    
+            forms.forEach(form => {
+                form.addEventListener("submit", function () {
+                    spinner.style.display = "flex";
+                });
+            });
+        });
+    </script>
+    
+</body>
+</html>
