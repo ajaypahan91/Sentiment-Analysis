@@ -1,6 +1,5 @@
-# Sentiment Analysis of Amazon Reviews 🛒
+# Sentiment Analysis of Amazon Reviews 
 
-# Sentiment Analysis of Reviews
 ## Overview
 This project is a sentiment analysis application that determines whether a review is positive, negative, or neutral. Users can input a single review or analyze reviews from an Amazon product URL to get detailed sentiment insights. The application is built using Python, Flask, and machine learning models.
 
